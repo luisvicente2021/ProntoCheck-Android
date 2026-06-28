@@ -40,7 +40,7 @@ class AltaEmpleadoActivity : AppCompatActivity() {
     private lateinit var faceNetHelper: FaceNetHelper
 
     private val viewModel: AltaEmpleadoViewModel by viewModels {
-        AltaEmpleadoViewModelFactory(AppDependencies.userRepository)
+        AltaEmpleadoViewModelFactory(AppDependencies.empleadoRepository)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -260,7 +260,7 @@ class AltaEmpleadoActivity : AppCompatActivity() {
         }
 
         if (validarCampos(empleado)) {
-            viewModel.registrarEmpleadoCompleto(empleado, "Pronto123!")
+            viewModel.registrarEmpleado(empleado)
         }
     }
 
