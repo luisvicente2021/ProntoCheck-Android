@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Este es el estilo que hace que tus MaterialCardView funcionen -->
+    <style name="Theme.ProntoCheck" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Colores principales -->
+        <item name="colorPrimary">#6650a4</item>
+        <item name="colorSecondary">#625b71</item>
+
+        <!-- Esto pone la barra de arriba (reloj/batería) blanca con iconos oscuros -->
+        <item name="android:statusBarColor">#FFFFFF</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

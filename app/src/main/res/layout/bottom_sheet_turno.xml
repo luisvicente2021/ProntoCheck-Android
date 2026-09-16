@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- bottom_sheet_turno.xml -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingHorizontal="24dp"
+    android:paddingTop="16dp"
+    android:paddingBottom="32dp"
+    android:background="@drawable/bg_bottom_sheet">
+
+    <!-- Handle -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="#CCCCCC"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Nombre empleado -->
+    <TextView
+        android:id="@+id/tvNombreEmpleado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:textColor="#1B5E20" />
+
+    <!-- Info día -->
+    <TextView
+        android:id="@+id/tvDiaInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textColor="#757575"
+        android:layout_marginBottom="20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Selecciona el turno:"
+        android:textSize="13sp"
+        android:textColor="#424242"
+        android:layout_marginBottom="12dp" />
+
+    <!-- Botón Turno 1 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAsignarT1"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="10dp"
+        android:text="🟢  Turno 1  ·  07:00 – 19:00"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:backgroundTint="#2E7D32"
+        app:cornerRadius="12dp" />
+
+    <!-- Botón Turno 2 -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAsignarT2"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="10dp"
+        android:text="🔵  Turno 2  ·  19:00 – 07:00"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:backgroundTint="#1565C0"
+        app:cornerRadius="12dp" />
+
+    <!-- Botón Descanso -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnAsignarD"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:text="⚫  Descanso  ·  Día libre"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        android:backgroundTint="#757575"
+        app:cornerRadius="12dp" />
+
+</LinearLayout>

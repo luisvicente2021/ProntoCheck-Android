@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:fitsSystemWindows="true">
+
+    <!-- HEADER -->
+    <TextView
+        android:id="@+id/tvHeader"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SISTEMA DE ASISTENCIA"
+        android:textColor="#FFFFFF"
+        android:textSize="14sp"
+        android:letterSpacing="0.1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:textStyle="bold" />
+
+    <!-- PREVIEW CÁMARA -->
+    <androidx.camera.view.PreviewView
+        android:id="@+id/previewView"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_below="@id/tvHeader"
+        android:layout_marginTop="12dp"/>
+
+    <!-- OVERLAY ESTADO SOBRE LA CÁMARA -->
+    <TextView
+        android:id="@+id/tvEstado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LISTO PARA ESCANEAR"
+        android:textColor="#FFFFFF"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:background="#88000000"
+        android:paddingStart="12dp"
+        android:paddingEnd="12dp"
+        android:paddingTop="6dp"
+        android:paddingBottom="6dp"
+        android:layout_below="@id/tvHeader"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="16dp"/>
+
+    <!-- INFO EMPLEADO DETECTADO Y RELOJ -->
+    <LinearLayout
+        android:id="@+id/layoutInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/previewView"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <!-- ICONO DE ESTATUS DE ROSTRO (AÑADIDO PARA EVITAR ERROR ivStatusFace) -->
+        <ImageView
+            android:id="@+id/ivStatusFace"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@android:drawable/presence_invisible"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:id="@+id/tvEmpleadoDetectado"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=""
+            android:textColor="#2ECC71"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:visibility="gone"/>
+
+        <TextView
+            android:id="@+id/tvTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00:00"
+            android:textColor="#2ECC71"
+            android:textSize="50sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvFullDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CARGANDO..."
+            android:textColor="#BDC3C7"
+            android:textSize="13sp"
+            android:layout_marginTop="-4dp"/>
+    </LinearLayout>
+
+    <!-- SECCIÓN: SELECCIÓN DE RESIDENCIAL Y GPS -->
+    <LinearLayout
+        android:id="@+id/layoutGps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/layoutInfo"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:gravity="center">
+
+        <Spinner
+            android:id="@+id/spinnerResidenciales"
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:backgroundTint="#FFFFFF"
+            android:background="@android:drawable/btn_dropdown"
+            android:spinnerMode="dropdown"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp">
+
+            <Button
+                android:id="@+id/btnValidarUbicacion"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:text="VALIDAR GPS"
+                android:textSize="12sp"
+                android:backgroundTint="#607D8B"
+                android:textColor="#FFFFFF"/>
+
+            <ImageView
+                android:id="@+id/ivStatusGps"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginStart="10dp"
+                android:src="@android:drawable/presence_invisible" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- PROGRESS BAR (AÑADIDO PARA EVITAR ERROR progressBar) -->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+    <!-- BOTONES INFERIORES -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp">
+
+        <Button
+            android:id="@+id/btnEscanear"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:text="ESCANEAR ROSTRO"
+            android:backgroundTint="#3B82F6"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/btnEntrada"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="6dp"
+                android:text="ENTRADA"
+                android:backgroundTint="#27AE60"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:enabled="false"/>
+
+            <Button
+                android:id="@+id/btnSalida"
+                android:layout_width="0dp"
+                android:layout_height="56dp"
+                android:layout_weight="1"
+                android:layout_marginStart="6dp"
+                android:text="SALIDA"
+                android:backgroundTint="#C0392B"
+                android:textColor="#FFFFFF"
+                android:textStyle="bold"
+                android:enabled="false"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

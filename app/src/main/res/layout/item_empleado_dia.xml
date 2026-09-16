@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_empleado_dia.xml — fila de empleado en vista Por Día -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="64dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingEnd="12dp">
+
+    <!-- Indicador de color de turno -->
+    <View
+        android:id="@+id/viewIndicador"
+        android:layout_width="5dp"
+        android:layout_height="match_parent"
+        android:layout_marginEnd="12dp" />
+
+    <!-- Nombre y horario -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvNombreItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:textColor="#212121"
+            android:textStyle="bold"
+            android:maxLines="1"
+            android:ellipsize="end" />
+
+        <TextView
+            android:id="@+id/tvHorarioItem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11sp"
+            android:textColor="#757575"
+            android:layout_marginTop="2dp" />
+
+    </LinearLayout>
+
+    <!-- Badge de turno -->
+    <TextView
+        android:id="@+id/tvTurnoItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:layout_marginEnd="10dp" />
+
+    <!-- Botón cambiar -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnCambiarTurno"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="wrap_content"
+        android:layout_height="34dp"
+        android:text="Cambiar"
+        android:textSize="11sp"
+        android:textColor="#1B5E20"
+        app:strokeColor="#1B5E20"
+        app:cornerRadius="16dp"
+        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+</LinearLayout>

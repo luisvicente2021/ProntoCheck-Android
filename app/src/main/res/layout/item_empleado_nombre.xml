@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- item_empleado_nombre.xml — columna fija del nombre -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="44dp"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:paddingStart="8dp"
+    android:paddingEnd="4dp"
+    android:background="@drawable/bg_row_selector">
+
+    <!-- Número de empleado -->
+    <TextView
+        android:id="@+id/tvNumero"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:textSize="10sp"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:background="@drawable/bg_numero_empleado"
+        android:layout_marginEnd="6dp" />
+
+    <!-- Nombre -->
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textSize="10sp"
+        android:textColor="#212121"
+        android:maxLines="2"
+        android:ellipsize="end"
+        android:lineSpacingMultiplier="1.1" />
+
+</LinearLayout>

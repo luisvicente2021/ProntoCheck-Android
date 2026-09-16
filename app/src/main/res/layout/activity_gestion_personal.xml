@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F4F5F7">
+
+    <!-- 1. HEADER OSCURO (Esto empuja todo hacia abajo y evita el choque con el reloj) -->
+    <LinearLayout
+        android:id="@+id/headerGestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1A1A2E"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="50dp"
+        android:paddingBottom="30dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestión de Personal"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#FFFFFF"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Listado de empleados registrados"
+            android:textSize="13sp"
+            android:textColor="#AAB4C8"
+            android:layout_marginTop="4dp"/>
+    </LinearLayout>
+
+    <!-- 2. RECYCLER VIEW (Ajustado para empezar DEBAJO del header) -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerEmpleados"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:padding="8dp"
+        android:clipToPadding="false"
+        app:layout_constraintTop_toBottomOf="@id/headerGestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- LAYOUT CARGANDO -->
+    <LinearLayout
+        android:id="@+id/layoutCargando"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/headerGestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cargando empleados..."
+            android:layout_marginTop="8dp"
+            android:textColor="#8A8FA3"/>
+    </LinearLayout>
+
+    <!-- LAYOUT VACÍO -->
+    <LinearLayout
+        android:id="@+id/layoutVacio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/headerGestion"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No hay empleados registrados"
+            android:textColor="#8A8FA3"
+            android:textSize="16sp"/>
+    </LinearLayout>
+
+    <!-- BOTÓN FLOTANTE NUEVO REGISTRO -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/btnNuevoRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:src="@android:drawable/ic_input_add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:tint="#FFFFFF"
+        app:backgroundTint="#1A1A2E"
+        android:contentDescription="Nuevo Registro" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

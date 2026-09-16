@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Pronto Check</string>
+    <string-array name="opciones_residenciales">
+        <item>Cancún Centro</item>
+        <item>Zona Hotelera</item>
+        <item>Playa del Carmen</item>
+        <item>Otros</item>
+    </string-array>
+
+    <string-array name="tipos_incidencia">
+        <item>Falta</item>
+        <item>Retardo</item>
+        <item>Salida Anticipada</item>
+        <item>Permiso Especial</item>
+    </string-array>
+
+</resources>

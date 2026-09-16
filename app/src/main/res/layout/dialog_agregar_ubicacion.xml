@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Nombre de la Residencial">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etNombrePunto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapWords" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:hint="Radio de tolerancia (metros)">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etRadioPunto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:text="100" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btnCapturarGps"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Capturar Coordenadas GPS"
+        android:layout_marginBottom="8dp"/>
+
+    <TextView
+        android:id="@+id/tvStatusGps"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="GPS no capturado"
+        android:textAlignment="center"
+        android:textColor="#FF0000"
+        android:textStyle="bold" />
+
+</LinearLayout>
