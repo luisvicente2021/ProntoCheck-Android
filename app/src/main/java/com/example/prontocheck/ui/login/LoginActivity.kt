@@ -14,6 +14,7 @@ import com.example.prontocheck.ui.dashboard.DashboardActivity
 import com.example.prontocheck.utils.Resource
 import com.example.prontocheck.databinding.ActivityMainBinding
 import com.example.prontocheck.di.AppDependencies
+import com.example.prontocheck.data.network.RetrofitClient
 
 // Importamos RelojActivity por si el usuario es de SEGURIDAD
 import com.example.prontocheck.RelojActivity
@@ -86,6 +87,15 @@ class LoginActivity : AppCompatActivity() {
                     // --- LÓGICA DE ROLES AQUÍ ---
                     val respuesta = resource.data
                     val token = respuesta?.accessToken
+
+                    android.util.Log.d(
+                        "AUTH_DEBUG",
+                        "Access token recibido: ${!token.isNullOrBlank()}"
+                    )
+
+                    RetrofitClient.setAccessToken(token)
+
+                    RetrofitClient.setAccessToken(token)
 
                     // Extraemos el rol del objeto metadata que definimos en LoginResponse
                     val rol = respuesta?.user?.metadata?.rol ?: "SEGURIDAD"

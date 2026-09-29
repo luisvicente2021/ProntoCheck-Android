@@ -82,6 +82,10 @@
             android:screenOrientation="portrait"
             android:exported="false" />
 
+        <activity
+            android:name=".ui.detalles.DetalleEmpleadoActivity"
+            android:exported="false" />
+
 
     </application>
 </manifest>

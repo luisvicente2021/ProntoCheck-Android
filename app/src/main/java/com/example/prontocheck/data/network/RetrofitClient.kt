@@ -1,19 +1,26 @@
 package com.example.prontocheck.data.network
 
 import com.example.prontocheck.BuildConfig
-import com.example.prontocheck.BuildConfig.SUPABASE_KEY
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
-
 object RetrofitClient {
+
     private const val BASE_URL = BuildConfig.SUPABASE_URL
     private const val API_KEY = BuildConfig.SUPABASE_KEY
 
+    // Token del usuario que inició sesión
+    private var accessToken: String? = null
+
+    fun setAccessToken(token: String?) {
+        accessToken = token
+    }
+
     private val client: OkHttpClient by lazy {
+
         val logging = HttpLoggingInterceptor().apply {
             level = HttpLoggingInterceptor.Level.BODY
         }
@@ -23,15 +30,37 @@ object RetrofitClient {
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
             .addInterceptor { chain ->
+
                 val original = chain.request()
+
                 val requestBuilder = original.newBuilder()
                     .header("apikey", API_KEY)
-                    .header("Authorization", "Bearer $API_KEY")
                     .header("Content-Type", "application/json")
-                    // CAMBIO CLAVE: Usamos 'minimal' para que Supabase no intente
-                    // hacer un SELECT del registro tras insertarlo (evita error RLS)
                     .header("Prefer", "minimal")
-                    .method(original.method, original.body)
+
+                // Si existe una sesión, usamos el token del usuario.
+                // Si todavía no ha iniciado sesión, usamos la API key.
+                val token = accessToken ?: API_KEY
+
+                android.util.Log.d(
+                    "AUTH_DEBUG",
+                    "Retrofit usa sesión autenticada: ${!accessToken.isNullOrBlank()}"
+                )
+
+                requestBuilder.header(
+                    "Authorization",
+                    "Bearer $token"
+                )
+
+                requestBuilder.header(
+                    "Authorization",
+                    "Bearer $token"
+                )
+
+                requestBuilder.method(
+                    original.method,
+                    original.body
+                )
 
                 chain.proceed(requestBuilder.build())
             }
