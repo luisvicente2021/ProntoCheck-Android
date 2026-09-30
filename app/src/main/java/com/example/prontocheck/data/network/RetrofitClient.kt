@@ -22,13 +22,20 @@ object RetrofitClient {
     private val client: OkHttpClient by lazy {
 
         val logging = HttpLoggingInterceptor().apply {
+
+            // Lo mantenemos en BODY mientras estamos desarrollando
             level = HttpLoggingInterceptor.Level.BODY
+
+            // Ocultamos valores sensibles en Logcat
+            redactHeader("Authorization")
+            redactHeader("apikey")
         }
 
         OkHttpClient.Builder()
             .connectTimeout(30, TimeUnit.SECONDS)
             .readTimeout(30, TimeUnit.SECONDS)
             .writeTimeout(30, TimeUnit.SECONDS)
+
             .addInterceptor { chain ->
 
                 val original = chain.request()
@@ -52,27 +59,28 @@ object RetrofitClient {
                     "Bearer $token"
                 )
 
-                requestBuilder.header(
-                    "Authorization",
-                    "Bearer $token"
-                )
-
                 requestBuilder.method(
                     original.method,
                     original.body
                 )
 
-                chain.proceed(requestBuilder.build())
+                chain.proceed(
+                    requestBuilder.build()
+                )
             }
+
             .addInterceptor(logging)
             .build()
     }
 
     val instance: SupabaseApi by lazy {
+
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(
+                GsonConverterFactory.create()
+            )
             .build()
             .create(SupabaseApi::class.java)
     }

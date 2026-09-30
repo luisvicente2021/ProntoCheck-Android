@@ -52,7 +52,7 @@ class AltaEmpleadoActivity : AppCompatActivity() {
         setupObservers()
         faceNetHelper = FaceNetHelper(this)
 
-        val opciones = listOf("Seleccione Residencial", "Altai", "Versalles", "Piamonte", "Castilla")
+        val opciones = listOf("Seleccione Residencial","Aqua", "Altai", "Arbolada", "Cumbres", "Kira", "Palmaris", "Rio")
         val adapter = android.widget.ArrayAdapter(this, android.R.layout.simple_spinner_item, opciones)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         binding.spinnerResidencial.adapter = adapter
@@ -265,14 +265,33 @@ class AltaEmpleadoActivity : AppCompatActivity() {
     }
 
     private fun validarCampos(e: Empleado): Boolean {
-        if (e.nombre.isNullOrEmpty() || e.email.isNullOrEmpty() || e.apellido_paterno.isNullOrEmpty()) {
-            Toast.makeText(this, "Nombre, Apellido P. y Email son obligatorios", Toast.LENGTH_SHORT).show()
+
+        if (
+            e.nombre.isBlank() ||
+            e.apellido_paterno.isNullOrBlank()
+        ) {
+            Toast.makeText(
+                this,
+                "Nombre y Apellido P. son obligatorios",
+                Toast.LENGTH_SHORT
+            ).show()
+
             return false
         }
-        if (e.residencial == "Seleccione Residencial" || e.residencial.isNullOrEmpty()) {
-            Toast.makeText(this, "Por favor seleccione una residencial válida", Toast.LENGTH_SHORT).show()
+
+        if (
+            e.residencial == "Seleccione Residencial" ||
+            e.residencial.isNullOrBlank()
+        ) {
+            Toast.makeText(
+                this,
+                "Por favor seleccione una residencial válida",
+                Toast.LENGTH_SHORT
+            ).show()
+
             return false
         }
+
         return true
     }
 

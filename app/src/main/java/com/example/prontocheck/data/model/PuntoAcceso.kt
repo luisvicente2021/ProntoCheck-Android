@@ -3,14 +3,18 @@ package com.example.prontocheck.data.model
 import com.google.gson.annotations.SerializedName
 
 data class PuntoAcceso(
+
     @SerializedName("id")
     val id: String? = null,
 
-    @SerializedName("nombre_residencial")
-    val nombre_residencial: String,
-
     @SerializedName("residencial_id")
-    val residencial_id: String?, // Agregado como opcional
+    val residencialId: String,
+
+    @SerializedName("nombre_residencial")
+    val nombreResidencial: String? = null,
+
+    @SerializedName("nombre_punto")
+    val nombrePunto: String,
 
     @SerializedName("latitud")
     val latitud: Double,
@@ -19,7 +23,7 @@ data class PuntoAcceso(
     val longitud: Double,
 
     @SerializedName("radio_metros")
-    val radio_metros: Double = 60.0,
+    val radioMetros: Double = 200.0,
 
     @SerializedName("activo")
     val activo: Boolean = true

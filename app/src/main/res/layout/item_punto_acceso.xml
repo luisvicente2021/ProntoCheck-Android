@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -22,19 +23,30 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/tvNombreResidencial"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Residencial"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tvNombrePunto"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nombre Residencial"
-                android:textSize="18sp"
-                android:textStyle="bold" />
+                android:layout_marginTop="4dp"
+                android:text="Punto de acceso"
+                android:textSize="16sp" />
 
             <TextView
                 android:id="@+id/tvCoordenadas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
                 android:text="Lat: 0.0, Lon: 0.0"
-                android:textColor="#666666" />
+                android:textColor="#666666"
+                android:textSize="13sp" />
+
         </LinearLayout>
 
         <ImageButton
@@ -42,8 +54,10 @@
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Eliminar punto de acceso"
             android:src="@android:drawable/ic_menu_delete"
             app:tint="@android:color/holo_red_dark" />
 
     </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>

@@ -192,7 +192,7 @@ class RelojActivity : AppCompatActivity() {
 
     private fun configurarPuntosAcceso(puntos: List<PuntoAcceso>) {
         puntosAcceso = puntos
-        val nombres = puntosAcceso.map { it.nombre_residencial }
+        val nombres = puntosAcceso.map { it.nombrePunto}
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, nombres)
         binding.spinnerResidenciales.adapter = adapter
         binding.spinnerResidenciales.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -223,7 +223,7 @@ class RelojActivity : AppCompatActivity() {
                 for (punto in puntosAcceso) {
                     val dist = FloatArray(1)
                     Location.distanceBetween(miLatitud, miLongitud, punto.latitud, punto.longitud, dist)
-                    if (dist[0] <= (punto.radio_metros + 200)) {
+                    if (dist[0] <= (punto.radioMetros + 200)) {
                         puntoEncontrado = punto
                         break
                     }

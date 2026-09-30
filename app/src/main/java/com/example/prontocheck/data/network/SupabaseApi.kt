@@ -19,6 +19,7 @@ import retrofit2.http.POST
 import retrofit2.http.Path
 import retrofit2.http.Query
 import com.example.prontocheck.data.model.UltimaAsistencia
+import com.example.prontocheck.data.model.Residencial
 
 
 interface SupabaseApi {
@@ -86,6 +87,14 @@ interface SupabaseApi {
         @Query("select") select: String = "*"
     ): Response<List<Asistencia>>
 
+    // RESIDENCIALES
+    @GET("rest/v1/residenciales")
+    suspend fun getResidenciales(
+        @Query("select") select: String = "id,nombre,activo",
+        @Query("activo") activo: String = "eq.true",
+        @Query("order") order: String = "nombre.asc"
+    ): Response<List<Residencial>>
+
     // 4. GEOCERCAS / PUNTOS DE ACCESO
     @GET("rest/v1/puntos_acceso")
     suspend fun getPuntosAcceso(
@@ -100,7 +109,13 @@ interface SupabaseApi {
 
     @DELETE("rest/v1/puntos_acceso")
     suspend fun eliminarPuntoAcceso(
-        @Query("id_punto_acceso") idFilter: String // Usamos el nombre de tu columna ID en la DB
+        @Query("id") idFilter: String
+    ): Response<Unit>
+
+    @PATCH("rest/v1/puntos_acceso")
+    suspend fun actualizarPuntoAcceso(
+        @Query("id") idFilter: String,
+        @Body campos: Map<String, Boolean>
     ): Response<Unit>
 
     // En SupabaseApi.kt

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -15,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <!-- Encabezado -->
+            <!-- ENCABEZADO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -41,20 +43,31 @@
                     android:text="Completa los datos del nuevo colaborador"
                     android:textSize="13sp"
                     android:textColor="#8A8FA3"
-                    android:layout_marginTop="2dp"/>
+                    android:layout_marginTop="2dp" />
+
             </LinearLayout>
 
+            <!-- CONTENIDO -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="16dp">
 
-                <!-- SECCIÓN DE FOTOGRAFÍA (FACE ID) -->
+                <!-- REGISTRO FACIAL -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="REGISTRO FACIAL"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#8A8FA3"
+                    android:layout_marginBottom="8dp" />
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="18dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
@@ -65,7 +78,6 @@
                         android:padding="20dp"
                         android:gravity="center">
 
-                        <!-- ✅ FrameLayout clickeable con ImageView adentro -->
                         <FrameLayout
                             android:id="@+id/frameIcono"
                             android:layout_width="88dp"
@@ -82,25 +94,24 @@
                                 android:src="@android:drawable/ic_menu_camera"
                                 android:padding="22dp"
                                 android:background="@android:drawable/dialog_holo_light_frame" />
+
                         </FrameLayout>
 
-                        <!-- La cámara inicia oculta -->
                         <androidx.camera.view.PreviewView
                             android:id="@+id/previewViewAlta"
                             android:layout_width="match_parent"
                             android:layout_height="260dp"
                             android:visibility="gone"
-                            android:layout_marginTop="12dp"/>
+                            android:layout_marginTop="12dp" />
 
-                        <!-- Botón de captura inicia oculto -->
                         <Button
                             android:id="@+id/btnCapturarRostro"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="Capturar Rostro"
+                            android:text="Capturar rostro"
                             android:visibility="gone"
                             android:layout_marginTop="8dp"
-                            android:backgroundTint="#4CAF50"/>
+                            android:backgroundTint="#4CAF50" />
 
                         <TextView
                             android:id="@+id/tvStatusRostro"
@@ -109,24 +120,26 @@
                             android:text="Toca el icono para registrar rostro"
                             android:textSize="12sp"
                             android:textColor="#8A8FA3"
-                            android:layout_marginTop="8dp"/>
+                            android:layout_marginTop="8dp" />
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <!-- DATOS PERSONALES -->
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="DATOS DE ACCESO Y PERSONALES"
+                    android:text="DATOS PERSONALES"
                     android:textSize="11sp"
                     android:textStyle="bold"
                     android:textColor="#8A8FA3"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="8dp" />
 
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="18dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
@@ -136,28 +149,90 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Correo electrónico" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etEmail" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="correo@ejemplo.com" android:inputType="textEmailAddress" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
-                        <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#EBEBEB" android:layout_marginVertical="8dp"/>
+                        <!-- NOMBRE -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre(s) *"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Nombre(s)" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etNombre" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Nombre" android:inputType="textCapWords" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
-                        <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#EBEBEB" android:layout_marginVertical="8dp"/>
+                        <EditText
+                            android:id="@+id/etNombre"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nombre"
+                            android:inputType="textCapWords"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Apellido paterno" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etApellidoPaterno" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Apellido paterno" android:inputType="textCapWords" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
-                        <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#EBEBEB" android:layout_marginVertical="8dp"/>
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EBEBEB"
+                            android:layout_marginVertical="8dp" />
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Apellido materno" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etApellidoMaterno" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Apellido materno" android:inputType="textCapWords" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
+                        <!-- APELLIDO PATERNO -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apellido paterno *"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
+
+                        <EditText
+                            android:id="@+id/etApellidoPaterno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Apellido paterno"
+                            android:inputType="textCapWords"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EBEBEB"
+                            android:layout_marginVertical="8dp" />
+
+                        <!-- APELLIDO MATERNO -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Apellido materno"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
+
+                        <EditText
+                            android:id="@+id/etApellidoMaterno"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Apellido materno"
+                            android:inputType="textCapWords"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <!-- ASIGNACIÓN -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ASIGNACIÓN"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#8A8FA3"
+                    android:layout_marginBottom="8dp" />
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="18dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
@@ -167,20 +242,37 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Residencial asignada" android:textSize="12sp" android:textColor="#8A8FA3"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Residencial asignada *"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
+
                         <Spinner
                             android:id="@+id/spinnerResidencial"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:paddingTop="4dp"/>
+                            android:paddingTop="4dp" />
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
                 <!-- CONTACTO -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CONTACTO"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#8A8FA3"
+                    android:layout_marginBottom="8dp" />
+
                 <androidx.cardview.widget.CardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
+                    android:layout_marginBottom="18dp"
                     app:cardCornerRadius="12dp"
                     app:cardElevation="0dp">
 
@@ -190,15 +282,97 @@
                         android:orientation="vertical"
                         android:padding="16dp">
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Dirección" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etDireccion" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Dirección completa" android:inputType="textPostalAddress" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
-                        <View android:layout_width="match_parent" android:layout_height="0.5dp" android:background="#EBEBEB" android:layout_marginVertical="8dp"/>
+                        <!-- DIRECCIÓN -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Dirección"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
 
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Teléfono personal" android:textSize="12sp" android:textColor="#8A8FA3"/>
-                        <EditText android:id="@+id/etTelCasa" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Teléfono" android:inputType="phone" android:background="@null" android:textSize="15sp" android:paddingTop="4dp"/>
+                        <EditText
+                            android:id="@+id/etDireccion"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Dirección completa"
+                            android:inputType="textPostalAddress"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="0.5dp"
+                            android:background="#EBEBEB"
+                            android:layout_marginVertical="8dp" />
+
+                        <!-- TELÉFONO -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teléfono personal"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
+
+                        <EditText
+                            android:id="@+id/etTelCasa"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Teléfono"
+                            android:inputType="phone"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
+
                     </LinearLayout>
+
                 </androidx.cardview.widget.CardView>
 
+                <!-- INFORMACIÓN OPCIONAL -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="INFORMACIÓN OPCIONAL"
+                    android:textSize="11sp"
+                    android:textStyle="bold"
+                    android:textColor="#8A8FA3"
+                    android:layout_marginBottom="8dp" />
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="18dp"
+                    app:cardCornerRadius="12dp"
+                    app:cardElevation="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Correo electrónico (opcional)"
+                            android:textSize="12sp"
+                            android:textColor="#8A8FA3" />
+
+                        <EditText
+                            android:id="@+id/etEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="correo@ejemplo.com"
+                            android:inputType="textEmailAddress"
+                            android:background="@null"
+                            android:textSize="15sp"
+                            android:paddingTop="4dp" />
+
+                    </LinearLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <!-- GUARDAR -->
                 <Button
                     android:id="@+id/btnGuardarEmpleado"
                     android:layout_width="match_parent"
@@ -208,9 +382,10 @@
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     android:layout_marginTop="8dp"
-                    android:layout_marginBottom="32dp"/>
+                    android:layout_marginBottom="32dp" />
 
             </LinearLayout>
+
         </LinearLayout>
 
         <ProgressBar
@@ -221,4 +396,5 @@
             android:visibility="gone" />
 
     </RelativeLayout>
+
 </ScrollView>

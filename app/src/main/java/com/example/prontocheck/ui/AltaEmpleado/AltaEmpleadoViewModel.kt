@@ -14,26 +14,39 @@ class AltaEmpleadoViewModel(
     private val repository: EmpleadoRepository
 ) : ViewModel() {
 
-    private val _registroState = MutableLiveData<Resource<Unit>>()
-    val registroState: LiveData<Resource<Unit>> = _registroState
+    private val _registroState =
+        MutableLiveData<Resource<Unit>>()
 
-    fun registrarEmpleado(empleado: Empleado) {
+    val registroState: LiveData<Resource<Unit>> =
+        _registroState
 
+    fun registrarEmpleado(
+        empleado: Empleado
+    ) {
+
+        // El correo ya NO es obligatorio
         if (
-            empleado.nombre.isNullOrEmpty() ||
-            empleado.email.isNullOrEmpty()
+            empleado.nombre.isBlank() ||
+            empleado.apellido_paterno.isNullOrBlank()
         ) {
+
             _registroState.value =
-                Resource.Error("Nombre y correo son obligatorios")
+                Resource.Error(
+                    "Nombre y apellido paterno son obligatorios"
+                )
+
             return
         }
 
-        _registroState.value = Resource.Loading
+        _registroState.value =
+            Resource.Loading
 
         viewModelScope.launch {
+
             try {
 
-                val response = repository.crear(empleado)
+                val response =
+                    repository.crear(empleado)
 
                 if (response.isSuccessful) {
 
@@ -47,7 +60,8 @@ class AltaEmpleadoViewModel(
 
                 } else {
 
-                    val error = response.errorBody()?.string()
+                    val error =
+                        response.errorBody()?.string()
 
                     Log.e(
                         "AltaEmpleado",
@@ -56,7 +70,8 @@ class AltaEmpleadoViewModel(
 
                     _registroState.value =
                         Resource.Error(
-                            error ?: "Error al registrar empleado"
+                            error
+                                ?: "Error al registrar empleado"
                         )
                 }
 
@@ -70,7 +85,8 @@ class AltaEmpleadoViewModel(
 
                 _registroState.value =
                     Resource.Error(
-                        e.message ?: "Error de red inesperado"
+                        e.message
+                            ?: "Error de red inesperado"
                     )
             }
         }
