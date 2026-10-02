@@ -287,6 +287,12 @@ class RelojActivity : AppCompatActivity() {
                     if (d < mejorDist) { mejorDist = d; mejorEmp = emp }
                 }
 
+                // AGREGAR ESTO
+                Log.d(
+                    "FACE_TEST",
+                    "Mejor candidato: ${mejorEmp?.nombre} | distancia: $mejorDist | umbral: $UMBRAL_DISTANCIA"
+                )
+
                 if (mejorDist <= UMBRAL_DISTANCIA && mejorEmp != null) {
                     idEmpleadoDetectado = mejorEmp.id
                     empleadoDetectado =

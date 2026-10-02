@@ -245,7 +245,9 @@ class AltaEmpleadoActivity : AppCompatActivity() {
         val empleado = Empleado(
             id = null,
             nombre = binding.etNombre.text.toString().trim(),
-            email = binding.etEmail.text.toString().trim(),
+            email = binding.etEmail.text.toString()
+                .trim()
+                .takeIf { it.isNotEmpty() },
             apellido_paterno = binding.etApellidoPaterno.text.toString().trim(),
             apellido_materno = binding.etApellidoMaterno.text.toString().trim(),
             residencial = binding.spinnerResidencial.selectedItem?.toString() ?: "",
